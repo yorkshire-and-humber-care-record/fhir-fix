@@ -7,13 +7,22 @@ FHIR Fix is a utility for fixing and manipulation of data in a FHIR Store. Use C
 It may be that data has been mapped and loaded into a FHIR Store, for example such as Interweave Connect provides. If mapping errors subsequently come to light then FHIR Fix can be used to manipulate the data and make corrections to data that has already been loaded
 
 **2. Retention Management**
-There may be a requirement to .... IN PROGRESS
 
-Internally FHIR Fix uses the same technologies (node.js, docker) as Interweave Connect and so it is a natural companion which can be installed alongside Interweave Connect. However this is in no way a pre-requisite, and FHIR Fix can also be used as a stand-alone utility and can connect to ANY FHIR compliant endpoint.
+There may be a requirement to implement retention policies which remove data from view after a certain period of time. FHIR Fix can also be configured to apply these selective "soft deletes" on a scheduled basis
+
+*Internally FHIR Fix uses the same technologies (node.js, docker) as Interweave Connect and so it is a natural companion which can be installed alongside Interweave Connect. However this is in no way a pre-requisite, as FHIR Fix can also be used as a stand-alone utility and can connect to ANY FHIR compliant endpoint.*
 
 # Key Features
 
-WORK IN PROGRESS
+The overall goal is to provide a framework for creating data-fix jobs - providing a rigorous and consistent implementation of all "boilerplate" aspects so that Data Providers can focus on configuring only the specifics of the actaul desired updates. This includes:
+
+ - Provides flexible options for data-fix "jobs" to be defined and scheduled
+ - Jobs can be for either update or deletion
+ - Job definition includes selection criteria (FHIR Query) to select the relevant records
+ - Easy-to-write code "plugins" can be used to add any other custom logic - for example more complex selection critieria, field manipulations, etc
+ - Keeps an audit trail and resource versions
+ - Keeps logs, including recording any errors
+ - Includes options for throttling
 
 # Getting Started
 
