@@ -1,0 +1,30 @@
+version: "3.2"
+
+# Deployment of a FHIR Datafix Framework
+
+services: 
+  fhir-datafix:    
+    # Based on the operating system use appropriate docker image of FHIR Datafix Framework
+    # image: synaneticsltd/synfhir-datafix:linux-latest
+    image: synaneticsltd/synfhir-datafix:windows-2019-latest
+    restart: always
+    container_name: fhir-datafix
+    environment:
+      - NAMESPACE=prod
+      - NODE_ENV=production
+      - SERVICEDIR=services
+      - SERVICES=**/*.service.js
+    env_file:
+      - .env
+    ports:
+      - 9000:9000
+    volumes:
+      # This is volume mapping for all data fixing scripts/plugins, replace <PROVIDER_PREFIX> with provider prefix 
+      # as configured in .env file and <DeploymentDir> with path to data fixing plugins
+      # e.g. - ./ABC:C:/FhirDatafix
+      - ./<PROVIDER_PREFIX>:<DeploymentDir>
+    networks:
+      - fhir-datafix-network
+    
+networks:
+  fhir-datafix-network:
