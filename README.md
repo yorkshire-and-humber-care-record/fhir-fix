@@ -1,10 +1,25 @@
-# fhir-fix
-Utility for FHIR data fixing and manipulation
+# What is FHIR Fix?
+
+FHIR Fix is a utility for fixing and manipulation of data in a FHIR Store
+
+Use Cases include:
+
+**1. Data Fixing**
+It may be that data has been mapped and loaded into a FHIR Store, such as Interweave Connect provides. If mapping errors come to light subsequently then FHIR Fix can be used to manipulate and make corrections to the data that has already been loaded
+
+**2. Retention Management**
+There may be a requirement to .... IN PROGRESS
+
+Internally FHIR Fix uses the same technologies (node.js, docker) as Interweave Connect and is a natural companion which can be installed alongside. However this is in no way a pre-requisite, and FHIR Fix can also be used as a stand-alone utility that can connect to any FHIR compliant endpoint
+
+# Key Features
 
 WORK IN PROGRESS
 
 # Getting Started
 
 [01 - Installation](/docs/install-guide.md)
+
 [02 - User Guide](/docs/user-guide.md)
+
 [03 - Retention Management](/docs/retention-mgt.md)
