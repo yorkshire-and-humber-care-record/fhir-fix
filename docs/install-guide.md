@@ -63,6 +63,8 @@ docker-compose.yml – this is the main Docker Compose configuration file which 
 
 _A couple of points that may need further explanation:_
 
+_You will need to adjust the commented-out lines to select either the Windows or Linux version_
+
 _You will see some "volumes" entries – these are mostly obvious and mount configuration files so that they are visible inside the docker environment. This will be used to add plugins or data fix scripts which will used by Datafix Framework._
 
 **FHIR Datafix Framework Configuration**
