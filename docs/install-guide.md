@@ -1,18 +1,8 @@
-![](RackMultipart20221215-1-jlxikl_html_7c6145630c573acb.jpg)
-
 # FHIR Datafix Framework
 
-Installation Guide
+# Installation Guide
 
 Contents
-
-[0 Document Control 3](#_Toc118151214)
-
-[0.1 Version History 3](#_Toc118151215)
-
-[0.2 References 3](#_Toc118151216)
-
-[0.3 Glossary 3](#_Toc118151217)
 
 [1 Overview 4](#_Toc118151218)
 
@@ -26,34 +16,7 @@ Contents
 
 [1.4.1 Configuration Files 5](#_Toc118151223)
 
-1.
-# Document Control
-
-## 1.1Version History
-
-| Date | Author | Comments |
-| --- | --- | --- |
-| 31-10-2022 | Mukesh Bhoi |
- |
-
-## 1.2References
-
-| Reference | Comments |
-| --- | --- |
-|
- |
- |
-
-## 1.3Glossary
-
-| Term | Explanation |
-| --- | --- |
-|
- |
- |
-
-1.
-# Overview
+# 1. Overview
 
 This document provides guidance on how to install and configure FHIR Datafix framework for correcting FHIR resource within FHIR Appliance.
 
