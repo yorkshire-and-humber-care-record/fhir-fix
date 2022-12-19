@@ -192,6 +192,7 @@ The function must return the updated resource or throw an error/exception with a
 
 Example:
 
+```
 module.exports = {
 
     name:"patient.plugin.mixin",
@@ -205,6 +206,7 @@ module.exports = {
 returnfhirResource;
 
 }
+```
 
 ## getFHIR(resourceType, id, query)
 
