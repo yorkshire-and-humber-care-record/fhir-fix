@@ -2,19 +2,19 @@
 
 # Installation Guide
 
-Contents
+**Contents**
 
-[1 Overview 4](#overview)
+[1 Overview](#overview)
 
-[1.1 Intended Audience 4](#intendend-audience)
+[1.1 Intended Audience](#intendend-audience)
 
-[1.2 Technical Overview 4](#technical-overview)
+[1.2 Technical Overview](#technical-overview)
 
-[2 Server Preparation 5](server-preparation)
+[2 Server Preparation](#server-preparation)
 
-[3 Installation 5](#installation)
+[3 Installation](#installation)
 
-[3.1 Configuration Files 5](configuration-files)
+[3.1 Configuration Files](#configuration-files)
 
 # Overview
 
