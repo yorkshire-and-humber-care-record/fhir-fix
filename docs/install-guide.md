@@ -28,7 +28,7 @@ The main audience is technical staff at a Data Provider who will be involved in 
 
 Following diagram provides very high-level conceptual overview of the FHIR Datafix Framework deployment architecture.
 
-<img src="media/deployment-ocverview.png" style="width:6.26736in;height:1.52014in" />
+<img src="media/deployment-overview.png" style="width:6.26736in;height:1.52014in" />
 
 FHIR Datafix Framework is written in Node.js and it is wrapped as a Docker container for ease of deployment.
 
