@@ -28,7 +28,7 @@ The main audience is technical staff at a Data Provider who will be involved in 
 
 Following diagram provides very high-level conceptual overview of the FHIR Datafix Framework deployment architecture.
 
-![](RackMultipart20221215-1-jlxikl_html_cb080a1dd09cfb1e.png)
+<img src="media/deployment-ocverview.png" style="width:6.26736in;height:1.52014in" />
 
 FHIR Datafix Framework is written in Node.js and it is wrapped as a Docker container for ease of deployment.
 
@@ -80,8 +80,7 @@ It is assumed that you have already worked through "Server Preparation" steps to
 - Browse to [http://localhost:9000/](http://localhost:9000/) to view the FHIR Datafix App running
 - If successful you should see following screen
 
-![](RackMultipart20221215-1-jlxikl_html_880b74a80cd53e68.png)
+<img src="media/home-screenshot.png" style="width:6.26736in;height:1.52014in" />
 
 **Please follow FHIR Datafix Framework User Guide for configuration of Jobs and schedules.**
 
-![](RackMultipart20221215-1-jlxikl_html_b7416550c3ddd286.jpg)
