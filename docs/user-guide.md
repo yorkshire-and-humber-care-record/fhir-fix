@@ -56,53 +56,29 @@ Following is the example of simple job object
 
 ```
 {
-
     "status": "enabled",
-
     "resourceType": "Location",
-
     "fhirQuery": "identifier=123",
-
     "batchSize": 2,
-
     "schedule": [
-
         {
-
             "start": {
-
                 "day": "WED",
-
                 "time": "23:34"
-
             },
-
             "stop": {
-
                 "day": "THU",
-
                 "time": "23:59"
-
             }
-
         }
-
     ],
-
     "optimisticLock":  **true** ,
-
     "errorThreshold": 2,
-
     "completionMode": "stop",
-
     "quiescentWaitTime": 90000,
-
     "failureMode": "fail",
-
     "fixId": "UPDATE-LOCATION",
-
     "active":  **true**
-
 }
 ```
 
@@ -150,7 +126,8 @@ Get job using FHIR Datafix Framework UI
 When a job runs, it checks its schedule to see if it should be running at this time and if so, load the plug-in code for the job's resource type. It then enters the main loop which:
 
 - Issues the configured FHIR query to the target appliance endpoint with appropriate batch size.
-- It will also update FHIR query to exclude all resource which has been already processed by Datafix Framework (check for https://interweavedigital.com/fhirfix/Fix/\<fixId\> tag)
+- It will also update FHIR query to exclude all resource which has been already processed by Datafix Framework 
+- (check for https://interweavedigital.com/fhirfix/Fix/\<fixId\> tag)
 - For each returned resource, pass to the plugin of that resource
 - If the plugin returns a resource and indicates it should replace the original, then it will send update to the FHIR appliance.
 
@@ -164,8 +141,10 @@ If the update is successful, entry to the audit log specifying the old and new v
 
 If the update fails logs will be updated. The job has a "failure mode" setting which, if set to "retry" will do nothing; since the resource will not be updated, it will be re-found and re-tried in subsequent cycles.
 
-If the mode is "fail", then the resource will be updated with the tag {"system": "https://interweavedigital.com/fhirfix/Fix/\<fixId\>", "code": failed", "display": "\<error messsage\>"}
-
+If the mode is "fail", then the resource will be updated with the tag 
+```
+ {"system": "https://interweavedigital.com/fhirfix/Fix/\<fixId\>", "code": failed", "display": "\<error messsage\>"}
+```
 If the number of errors exceeds the error threshold, Job status changed to errored and will stop the job
 
 Failed resources that have been marked as failed can be retrieved using the Get Failures API call.
@@ -184,7 +163,9 @@ The job specification includes a resource type, so in the plugin folder, FHIR Fi
 
 The plugin must present an interface method/function of:
 
+```
 fixResource(resource::object, context::object) :: object
+```
 
 the resource parameter will be the FHIR resource to fix and the context will have information on the job as well as providing callback methods below.
 
@@ -194,17 +175,11 @@ Example:
 
 ```
 module.exports = {
-
     name:"patient.plugin.mixin",
-
     methods: {
-
     asyncfixResource(fhirResource, ctx) {
-
 // Update fhir resource
-
 returnfhirResource;
-
 }
 ```
 
