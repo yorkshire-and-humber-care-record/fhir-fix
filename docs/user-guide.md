@@ -54,6 +54,7 @@ A simple job definition contains:
 
 Following is the example of simple job object
 
+```
 {
 
     "status": "enabled",
@@ -103,6 +104,7 @@ Following is the example of simple job object
     "active":  **true**
 
 }
+```
 
 # Jobs API
 
