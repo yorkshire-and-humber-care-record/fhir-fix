@@ -4,27 +4,27 @@
 
 Contents
 
-[1 Overview 4](#_Toc118151218)
+[1 Overview 4](#overview)
 
-[1.1 Intended Audience 4](#_Toc118151219)
+[1.1 Intended Audience 4](#intendend-audience)
 
-[1.2 Technical Overview 4](#_Toc118151220)
+[1.2 Technical Overview 4](#technical-overview)
 
-[1.3 Server Preparation 5](#_Toc118151221)
+[2 Server Preparation 5](server-preparation)
 
-[1.4 Installation 5](#_Toc118151222)
+[3 Installation 5](#installation)
 
-[1.4.1 Configuration Files 5](#_Toc118151223)
+[3.1 Configuration Files 5](configuration-files)
 
-# 1. Overview
+# Overview
 
 This document provides guidance on how to install and configure FHIR Datafix framework for correcting FHIR resource within FHIR Appliance.
 
-## 1.1Intended Audience
+## Intended Audience
 
 The main audience is technical staff at a Data Provider who will be involved in the installation and configuration of a FHIR Datafix Framework.
 
-## 1.2Technical Overview
+## Technical Overview
 
 Following diagram provides very high-level conceptual overview of the FHIR Datafix Framework deployment architecture.
 
@@ -45,17 +45,17 @@ If deployment to Linux (Ubuntu 18.04) is an option, then it is recommended as th
 
 _Note on Windows 10 – On Windows 10 then Microsoft now provide the Windows Subsystem on Linux v2 (WSL2). This offers full Linux support, and therefore Windows 10 can now run native Linux containers. Evidently this is a desktop operating system however, and not suitable for production deployments_
 
-## 1.3Server Preparation
+# Server Preparation
 
 If installing alongside with FHIR Appliance (Node.js version), this step can be ignored as server is already prepared to run Node.js application. Alternatively, please follow below instruction to setup and prepare server for Node.js application.
 
 [https://github.com/yorkshire-and-humber-care-record/fhir-appliance/blob/master/docs/install-guide/FHIR-Appliance-Install-02-Server-Preparation.md](https://github.com/yorkshire-and-humber-care-record/fhir-appliance/blob/master/docs/install-guide/FHIR-Appliance-Install-02-Server-Preparation.md)
 
-## 1.4Installation
+# Installation
 
 Download repository and navigate to install directory and configure docker-compose.yml and .env files as described below.
 
-### 1.4.1Configuration Files
+## Configuration Files
 
 **Docker Compose Configuration:**
 
