@@ -143,7 +143,7 @@ If the update fails logs will be updated. The job has a "failure mode" setting w
 
 If the mode is "fail", then the resource will be updated with the tag 
 ```
- {"system": "https://interweavedigital.com/fhirfix/Fix/\<fixId\>", "code": failed", "display": "\<error messsage\>"}
+ {"system": "https://interweavedigital.com/fhirfix/Fix/<fixId>", "code": failed", "display": "\<error messsage\>"}
 ```
 If the number of errors exceeds the error threshold, Job status changed to errored and will stop the job
 
