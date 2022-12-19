@@ -22,7 +22,7 @@ The overall goal is to provide a framework for creating data-fix jobs - providin
  - Easy-to-write code "plugins" can be used to add any other custom logic - for example more complex selection critieria, field manipulations, etc
  - Keeps an audit trail and resource versions
  - Keeps logs, including recording any errors
- - Includes options for throttling
+ - Includes options for throttling processing to run unobtrusively in the background
 
 # Getting Started
 
