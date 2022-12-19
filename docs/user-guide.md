@@ -156,7 +156,7 @@ When a job runs, it checks its schedule to see if it should be running at this t
 
 If the update is successful, entry to the audit log specifying the old and new versions of the resource using a versioned FHIR reference will be added, e.g.
 
-<img src="media/audit-example-screenshot.png" style="width:6.26736in;height:1.52014in" />
+<img src="media/audit-example.png" style="width:6.26736in;height:1.52014in" />
 
 ## Failure
 
