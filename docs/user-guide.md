@@ -127,7 +127,9 @@ When a job runs, it checks its schedule to see if it should be running at this t
 
 - Issues the configured FHIR query to the target appliance endpoint with appropriate batch size.
 - It will also update FHIR query to exclude all resource which has been already processed by Datafix Framework - check for tag 
-    https://interweavedigital.com/fhirfix/Fix/<fixId>
+```
+    "https://interweavedigital.com/fhirfix/Fix/<fixId>"
+```
 - For each returned resource, pass to the plugin of that resource
 - If the plugin returns a resource and indicates it should replace the original, then it will send update to the FHIR appliance.
 
