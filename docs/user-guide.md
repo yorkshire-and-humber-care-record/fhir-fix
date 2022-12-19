@@ -31,7 +31,7 @@ The main audience is technical staff at a Data Provider who will be involved in 
 
 First make sure FHIR Datafix Framework up and running, you should see following screen.
 
-![](RackMultipart20221215-1-eqqi4x_html_880b74a80cd53e68.png)
+<img src="media/home-screenshot.png" style="width:6.26736in;height:1.52014in" />
 
 The definition of what work to perform is contained in a "job", FHIR Datafix can be configured with multiple jobs.
 
@@ -131,17 +131,17 @@ Following Jobs API can be used to create, update, or delete jobs. There are some
 | Clear All Failures | POST /failures/clear | Finds all failed resources and removes the failure tag. |
 | Get Failures | GET /failures | Returns all resources that have failed |
 
-![](RackMultipart20221215-1-eqqi4x_html_24aea353f90adbe8.png)
+<img src="media/jobs-api-screenshot.png" style="width:6.26736in;height:1.52014in" />
 
 This APIs can be used with Postman or directly from FHIR Datafix Framework as shown below.
 
 **Create Job using Postman:**
 
-![](RackMultipart20221215-1-eqqi4x_html_f735aa1b5ccd559a.png)
+<img src="media/postman-screenshot.png" style="width:6.26736in;height:1.52014in" />
 
 Get job using FHIR Datafix Framework UI
 
-![](RackMultipart20221215-1-eqqi4x_html_45b88176a482fee8.png)
+<img src="media/get-job-screenshot.png" style="width:6.26736in;height:1.52014in" />
 
 # Processing
 
@@ -156,7 +156,7 @@ When a job runs, it checks its schedule to see if it should be running at this t
 
 If the update is successful, entry to the audit log specifying the old and new versions of the resource using a versioned FHIR reference will be added, e.g.
 
-![](RackMultipart20221215-1-eqqi4x_html_f14b3f7319c40b20.png)
+<img src="media/audit-example-screenshot.png" style="width:6.26736in;height:1.52014in" />
 
 ## Failure
 
@@ -217,4 +217,3 @@ All successful or failed attempt by Job will be audited. Audit data can be acces
 | Search | GET /audit | Find all audit events |
 | Read | GET /audit/:id | Retrieve specific audit event |
 
-![](RackMultipart20221215-1-eqqi4x_html_b7416550c3ddd286.jpg)
