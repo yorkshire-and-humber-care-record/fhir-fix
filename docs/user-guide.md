@@ -18,17 +18,17 @@
 
 [5.1 Mandatory Plugin Functions](#mandatory-plugin-functions)
 
-[5.1.1 fixResource](#fixResource)
+ - [5.1.1 fixResource](#fixResource)
 
 [5.2 Optional Plugin Functions](#optional-plugin-functions)
 
-[5.2.1 filterResource](#filterResource)
+ - [5.2.1 filterResource](#filterResource)
 
-[5.2.2 fhirHeaders](#fhirHeaders)
+ - [5.2.2 fhirHeaders](#fhirHeaders)
 
 [5.3 Other Functions](#other-functions)
 
-[5.3.1 getFHIR](#getFHIR)
+ - [5.3.1 getFHIR](#getFHIR)
 
 [6 Auditing](#auditing)
 
@@ -214,6 +214,7 @@ filterResource(resources: FhirResourceObject[]): FhirResourceObject[]
 ```
 
  - This optional operation occurs immediately after the fhirQuery is executed and can be used to reduce the resource set that the update operation is applied to. It should be used when complex logic is required to filter resources where a single fhirQuery might struggle. For example, to apply more complex logic to select records for deletion.
+
 Example:
 
 
@@ -236,19 +237,28 @@ fhirHeaders(resource: FhirResourceObject): { [key: string]: string }
 ```
 
  - If present this function will be called before sending update or delete requests to the FHIR Store. It is called per resource and can be used to populate additional headers to send with the request. i.e. an expiry header on a delete request. It should return a standard object with string keys and values.
+
 Example:
 
 ```
-	module.exports = {
-	  name: "patient.plugin.mixin",
-	  methods: {
-	    fhirHeaders(resources) {
-	      const headers = {};
-	      // logic to apply desired headers to object
-	      return headers;
-	    }
-	  }
+module.exports = { 
+    name: 'header-example.plugin.mixin',
+    methods: {
+        fhirHeaders (resource) {
+            let duration = 'P5Y';
 
+            const cutoff = moment().subtract(18, 'y');
+            const birth = moment(resource.birthDate);
+            if (birth > cutoff) {
+                duration = 'P10Y';
+            }
+
+            return {
+                'Interweave-Retention-Erase-TTL': duration,
+            };
+        },
+    },
+};
 ```
 
 ## Other Functions
