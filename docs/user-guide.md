@@ -168,13 +168,13 @@ The job specification includes a resource type, so in the plugin folder, FHIR Fi
 ## Mandatory Plugin Functions
 For a job where `interaction: "update"` the plugin must be present and conform to an interface method/function of:
 
+### fixResource
 ```
 fixResource(resource::object, context::object) :: object
 ```
 
-the resource parameter will be the FHIR resource to fix and the context will have information on the job as well as providing callback methods below.
-
-The function must return the updated resource or throw an error/exception with a diagnostic message.
+ - The resource parameter will be the FHIR resource to fix and the context will have information on the job as well as providing callback methods below.
+ - The function must return the updated resource or throw an error/exception with a diagnostic message.
 
 Example:
 
@@ -194,11 +194,12 @@ For a job where `interaction: "delete"` the plugin is entirely optional. It is p
 
 Plugins can optionally define the following functions:
 
+### filterResource
 ```
 filterResource(resources: FhirResourceObject[]): FhirResourceObject[]
 ```
 
-This optional operation occurs immediately after the fhirQuery is executed and can be used to reduce the resource set that the update operation is applied to. It should be used when complex logic is required to filter resources where a single fhirQuery might struggle.
+ - This optional operation occurs immediately after the fhirQuery is executed and can be used to reduce the resource set that the update operation is applied to. It should be used when complex logic is required to filter resources where a single fhirQuery might struggle.
 Example:
 
 
@@ -215,12 +216,12 @@ Example:
 }
 ```
 
-
+### fhirHeaders
 ```
 fhirHeaders(resource: FhirResourceObject): { [key: string]: string }
 ```
 
-If present this function will be called before sending update or delete requests to the FHIR Store. It is called per resource and can be used to populate additional headers to send with the request. i.e. an expiry header on a delete request. It should return a standard object with string keys and values.
+ - If present this function will be called before sending update or delete requests to the FHIR Store. It is called per resource and can be used to populate additional headers to send with the request. i.e. an expiry header on a delete request. It should return a standard object with string keys and values.
 Example:
 
 ```
@@ -236,8 +237,12 @@ Example:
 
 ```
 
+## Other Functions
 
-## getFHIR(resourceType, id, query)
+### getFHIR
+```
+getFHIR(resourceType, id, query)
+```
 
 The plugin code may need access to other FHIR resources in the target appliance to decide on how to code its resource. The context will provide a getFHIR method that will cause FHIR Fix to issue the desired FHIR query to the target appliance and deliver the results to the plug-in
 
