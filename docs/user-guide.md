@@ -16,6 +16,20 @@
 
 [5 Plug-ins and Context Services](#plug-ins-and-context-services)
 
+[5.1 Mandatory Plugin Functions](#mandatory-plugin-functions)
+
+[5.1.1 fixResource](#fixResource)
+
+[5.2 Optional Plugin Functions](#optional-plugin-functions)
+
+[5.2.1 filterResource](#filterResource)
+
+[5.2.2 fhirHeaders](#fhirHeaders)
+
+[5.3 Other Functions](#other-functions)
+
+[5.3.1 getFHIR](#getFHIR)
+
 [6 Auditing](#auditing)
 
 
@@ -199,7 +213,7 @@ Plugins can optionally define the following functions:
 filterResource(resources: FhirResourceObject[]): FhirResourceObject[]
 ```
 
- - This optional operation occurs immediately after the fhirQuery is executed and can be used to reduce the resource set that the update operation is applied to. It should be used when complex logic is required to filter resources where a single fhirQuery might struggle.
+ - This optional operation occurs immediately after the fhirQuery is executed and can be used to reduce the resource set that the update operation is applied to. It should be used when complex logic is required to filter resources where a single fhirQuery might struggle. For example, to apply more complex logic to select records for deletion.
 Example:
 
 
