@@ -29,5 +29,3 @@ The overall goal is to provide a framework for creating data-fix jobs - providin
 [01 - Installation](/docs/install-guide.md)
 
 [02 - User Guide](/docs/user-guide.md)
-
-[03 - Retention Management](/docs/retention-mgt.md)
