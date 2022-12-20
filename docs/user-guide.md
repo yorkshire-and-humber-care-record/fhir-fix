@@ -21,7 +21,7 @@
 
 # Overview
 
-This document provides guidance on how to configure and use FHIR Datafix framework for configuring different jobs with schedule for correcting FHIR resource within FHIR Appliance.
+This document provides guidance on how to configure and use the FHIR Datafix framework for configuring different jobs with schedule for correcting and/or deleting FHIR resources within the FHIR Appliance.
 
 ## Intended Audience
 
@@ -51,6 +51,7 @@ A simple job definition contains:
 - **fixId** - Meaningful, string rather than a guid. it will be some text provided by the user. eg "IW-PROFILE-ALIGN-20220718"
 
 - **plugin** - Optional plugin file name. Use if there is a need to run multiple data fix jobs for the same resource type on different schedules. If not provided plugin scripts will be identified by resource type. For example, if resource type is Patient, then plugin will be Patient.js unless this field is set.
+- **interaction** - mandatory field to denote the intended action for the job to perform, it is limited to values of ‘delete’ and 'update'.
 
 Following is the example of simple job object
 
@@ -78,7 +79,8 @@ Following is the example of simple job object
     "quiescentWaitTime": 90000,
     "failureMode": "fail",
     "fixId": "UPDATE-LOCATION",
-    "active":  **true**
+    "active":  **true**,
+    "interaction": "update"
 }
 ```
 
@@ -159,11 +161,12 @@ If the mode is "continue", the loop that queries for resources will sleep for th
 
 # Plug-ins and Context Services
 
-If plugin file name is provided, then it will be used, otherwise plugin scripts will be identified by resource type. For example, if resource type is Patient, then plugin will be Patient.js unless plugin field is set.
+If `plugin` file name is provided, then it will be used, otherwise plugin scripts will be identified by `resource type`. For example, if `resource type` is `Patient`, then plugin will be `Patient.js` unless plugin field is set. It should be noted that if the `plugin` field is provided, the plugin file must exist to avoid the job yielding an error.
 
 The job specification includes a resource type, so in the plugin folder, FHIR Fix will expect to find the code for that resource. When called, FHIR Fix will pass an instance of that resource along with a context object that provides information about the job and a way for the plugin code to call some contextual services detailed below.
 
-The plugin must present an interface method/function of:
+## Mandatory Plugin Functions
+For a job where `interaction: "update"` the plugin must be present and conform to an interface method/function of:
 
 ```
 fixResource(resource::object, context::object) :: object
@@ -184,6 +187,55 @@ module.exports = {
 returnfhirResource;
 }
 ```
+
+For a job where `interaction: "delete"` the plugin is entirely optional. It is possible to schedule a job to delete resources purely by the job `fhirQuery` field.
+
+## Optional Plugin Functions
+
+Plugins can optionally define the following functions:
+
+```
+filterResource(resources: FhirResourceObject[]): FhirResourceObject[]
+```
+
+This optional operation occurs immediately after the fhirQuery is executed and can be used to reduce the resource set that the update operation is applied to. It should be used when complex logic is required to filter resources where a single fhirQuery might struggle.
+Example:
+
+
+```
+	module.exports = {
+	  name: "patient.plugin.mixin",
+	  methods: {
+	    filterResources(resources) {
+	      const filteredResources = [];
+	      // apply filtering logic ...
+	      return filteredResources;
+	    }
+	  }
+}
+```
+
+
+```
+fhirHeaders(resource: FhirResourceObject): { [key: string]: string }
+```
+
+If present this function will be called before sending update or delete requests to the FHIR Store. It is called per resource and can be used to populate additional headers to send with the request. i.e. an expiry header on a delete request. It should return a standard object with string keys and values.
+Example:
+
+```
+	module.exports = {
+	  name: "patient.plugin.mixin",
+	  methods: {
+	    fhirHeaders(resources) {
+	      const headers = {};
+	      // logic to apply desired headers to object
+	      return headers;
+	    }
+	  }
+
+```
+
 
 ## getFHIR(resourceType, id, query)
 
